@@ -1,53 +1,64 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>Новости — Магазин Пуэра</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
-    header, footer { background: #3e2723; color: #fff; text-align: center; padding: 20px; }
-    nav { background: #5d4037; padding: 10px; }
-    nav a { color: #fff; margin: 0 10px; text-decoration: none; }
-    .news { padding: 20px; border-bottom: 1px solid #ccc; }
-    .news h2 { margin: 0; color: #3e2723; }
-    .meta { color: #777; font-size: 14px; }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Новости — Семестровая</title>
+  <link rel="stylesheet" href="../style/news.css" />
 </head>
 <body>
-  <header>
-    <h1>Новости о Пуэре</h1>
-  </header>
+  <div class="page-container">
+    <!-- Хэдер -->
+    <header class="header">
+      <h1>Хэдер</h1>
+    </header>
+    
+    <!-- Меню -->
+    <nav class="nav">
+      <ul class="nav-list">
+        <li class="nav-item"><a class="nav-link" href="../index.html">Главная</a></li>
+        <li class="nav-item"><a class="nav-link" href="news.html">Новости</a></li>
+        <li class="nav-item"><a class="nav-link" href="goods.html">Товары</a></li>
+        <li class="nav-item"><a class="nav-link" href="contacts.html">Контакты</a></li>
+      </ul>
+    </nav>
 
-  <nav>
-    <a href="../index.html">Главная</a>
-    <a href="news.html">Новости</a>
-    <a href="goods.html">Каталог</a>
-    <a href="contacts.html">Контакты</a>
-  </nav>
+    <!-- Контент -->
+    <main class="content">
+      <section class="news-section">
+        <h1 class="news-title-page">Новости</h1>
 
-  <main>
-    <div class="news">
-      <h2>Новый завоз пуэра из Юньнани</h2>
-      <p class="meta">20.09.2025, Автор: TeaMaster</p>
-      <p>Мы получили свежую партию шу и шэн пуэров прямо из Китая. Настоящие чайные шедевры уже доступны в нашем магазине!</p>
-    </div>
+        <article class="news-item">
+          <h2 class="news-title">Новый завоз пуэра из Юньнани</h2>
+          <div class="news-meta">20.09.2025 · Автор: TeaMaster</div>
+          <p class="news-text">
+            Мы получили свежую партию шу и шэн пуэров прямо из Китая. Настоящие чайные шедевры уже доступны в нашем магазине!
+          </p>
+        </article>
 
-    <div class="news">
-      <h2>Семинар по завариванию пуэра</h2>
-      <p class="meta">15.09.2025, Автор: Мария Чайникова</p>
-      <p>Приглашаем всех любителей чая на мастер-класс по традиционному завариванию пуэра в стиле гунфу ча.</p>
-    </div>
+        <article class="news-item">
+          <h2 class="news-title">Семинар по завариванию пуэра</h2>
+          <div class="news-meta">15.09.2025 · Автор: Мария Чайникова</div>
+          <p class="news-text">
+            Приглашаем всех любителей чая на мастер-класс по традиционному завариванию пуэра в стиле гунфу ча.
+          </p>
+        </article>
 
-    <div class="news">
-      <h2>Скидки к Международному дню чая</h2>
-      <p class="meta">10.09.2025, Автор: Admin</p>
-      <p>Только один день! Скидки до 25% на лучшие сорта пуэра.</p>
-    </div>
-  </main>
+        <article class="news-item">
+          <h2 class="news-title">Скидки к Международному дню чая</h2>
+          <div class="news-meta">10.09.2025 · Автор: Admin</div>
+          <p class="news-text">
+            Только один день! Скидки до 25% на лучшие сорта пуэра.
+          </p>
+        </article>
+      </section>
+    </main>
 
-  <footer>
-    <p>&copy; 2025 Магазин Пуэра. Все права защищены.</p>
-  </footer>
+    <!-- Футер -->
+    <footer class="footer">
+      <p>2025 Магазин Пуэра. Все права защищены.</p>
+    </footer>
+  </div>
 </body>
 </html>
 
