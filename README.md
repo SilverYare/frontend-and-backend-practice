@@ -18,4 +18,4 @@
 
 ## Ссылка на рабочий сайт
 
-[Посмотреть сайт на GitHub Pages](https://silveryare.github.io/frontend-and-backend-practice/index.html)
+[Посмотреть сайт на GitHub Pages](https://silveryare.github.io/frontend-and-backend-practice/)
