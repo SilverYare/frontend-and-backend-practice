@@ -1,359 +1,328 @@
+/* ===== CSS ПЕРЕМЕННЫЕ ДЛЯ КОРИЧНЕВОЙ ТЕМЫ ===== */
+:root {
+    /* Цвета */
+    --color-primary: #8B5E3C;       /* Основной коричневый */
+    --color-primary-dark: #7A4E2F;
+    --color-primary-light: #A67857;
+    --color-secondary: #C19A6B;     /* Вторичный теплый оттенок */
+    --color-accent: #D9A066;
+    --color-success: #6B4226;
+    --color-warning: #E2B07E;
+    --color-error: #B7410E;
+    --color-info: #A0522D;
+    
+    /* Дополнительные цвета */
+    --color-dark: #3E2C23;
+    --color-darker: #2F1F17;
+    --color-light: #F5EFE6;
+    --color-lighter: #EADFCF;
+    --color-white: #ffffff;
+    
+    /* Фоны */
+    --color-background: #F5EFE6;
+    --color-background-alt: #EADFCF;
+    --color-card: #FFF7F0;
+    --color-card-hover: #F0E1D0;
+    
+    /* Текст */
+    --color-text: #4B2E2A;
+    --color-text-light: #7B5A50;
+    --color-text-inverse: #ffffff;
+    --color-link: #8B5E3C;
+    --color-link-hover: #7A4E2F;
+    
+    /* Границы */
+    --color-border: #D9BFAF;
+    --color-border-light: #F0E1D0;
+    --color-focus: rgba(139, 94, 60, 0.25);
+    
+    /* Состояния взаимодействия */
+    --color-hover: rgba(0, 0, 0, 0.05);
+    --color-active: rgba(0, 0, 0, 0.1);
+    --color-primary-hover: #7A4E2F;
+    
+    /* Размеры шрифтов */
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-md: 1.125rem;
+    --font-size-lg: 1.25rem;
+    --font-size-xl: 1.5rem;
+    --font-size-2xl: 2rem;
+    --font-size-3xl: 2.5rem;
+    
+    /* Отступы */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+    
+    /* Радиусы скругления */
+    --border-radius-small: 0.375rem;
+    --border-radius-medium: 0.5rem;
+    --border-radius-large: 0.75rem;
+    --border-radius-xl: 1rem;
+    
+    /* Тени */
+    --shadow-small: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-large: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    
+    /* Переходы */
+    --transition-fast: 0.15s ease-in-out;
+    --transition-normal: 0.3s ease-in-out;
+    --transition-slow: 0.5s ease-in-out;
+}
+
+/* Темная тема */
+[data-theme="dark"] {
+    --color-background: #2F1F17;
+    --color-background-alt: #3E2C23;
+    --color-card: #3E2C23;
+    --color-card-hover: #4B3227;
+    
+    --color-text: #F5EFE6;
+    --color-text-light: #D9BFAF;
+    --color-border: #4B3227;
+    --color-border-light: #5C4232;
+}
+
 /* ===== БАЗОВЫЕ СТИЛИ ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Современный шрифт для лучшей читаемости */
-    margin: 0; /* Убираем стандартные отступы браузера */
-    padding: 0; /* Убираем стандартные внутренние отступы */
-    background: linear-gradient(135deg, #a27b2e 0%, #945c31 100%); /* Красивый градиентный фон всей страницы */
-    min-height: 100vh; /* Минимальная высота равна высоте окна браузера */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--color-background);
+    transition: var(--transition-normal);
 }
 
-/* ===== КОНТЕЙНЕР СТРАНИЦЫ ===== */
-/* ИЗМЕНЕНИЕ: Добавили CSS Grid для основного макета страницы */
+/* ===== СТРАНИЦА ===== */
 .page-container {
-max-width: 1200px;
-margin: 0 auto;
-background: white;
-min-height: 100vh;
-box-shadow: 0 0 30px rgba(0,0,0,0.1);
-/* Новое: Сеточный макет для семантических областей */
-display: grid;
-grid-template-rows: auto auto 1fr auto;
-grid-template-areas:
-"header"
-"nav"
-"main"
-"footer";
+    max-width: 1200px;
+    margin: 0 auto;
+    background: var(--color-background);
+    box-shadow: 0 0 30px rgba(0,0,0,0.1);
+    padding-bottom: var(--spacing-xl);
 }
 
-/* ===== ШАПКА ===== */
 .header {
-    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); /* Темный градиентный фон */
-    color: white; /* Белый цвет текста */
-    text-align: center; /* Выравнивание текста по центру */
-    padding: 30px; /* Внутренние отступы со всех сторон */
-    font-size: 28px; /* Размер шрифта */
-    font-weight: 300; /* Легкое начертание шрифта */
-    letter-spacing: 2px; /* Расстояние между буквами */
+    background: linear-gradient(135deg, var(--color-dark), var(--color-darker));
+    color: var(--color-white);
+    text-align: center;
+    padding: var(--spacing-xl);
+    font-size: var(--font-size-2xl);
+    font-weight: 600;
+    border-radius: var(--border-radius-medium);
 }
 
-/* ===== НАВИГАЦИЯ ===== */
 .nav {
-    background: #2c3e50; /* Темно-синий фон навигации */
-    padding: 20px 0; /* Вертикальные отступы */
+    background: var(--color-dark);
+    padding: var(--spacing-md) 0;
 }
 
 .nav-list {
-    list-style: none; /* Убираем маркеры списка */
-    margin: 0; /* Убираем внешние отступы */
-    padding: 0; /* Убираем внутренние отступы */
-    display: flex; /* Горизонтальное расположение элементов */
-    justify-content: center; /* Выравнивание по центру */
-    gap: 25px; /* Расстояние между элементами навигации */
-}
-
-.nav-item {
-    margin: 0; /* Убираем отступы у пунктов меню */
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-lg);
+    list-style: none;
 }
 
 .nav-link {
-    color: white; /* Белый цвет текста ссылок */
-    text-decoration: none; /* Убираем подчеркивание ссылок */
-    padding: 12px 25px; /* Отступы внутри ссылок */
-    border-radius: 25px; /* Скругленные углы (капсульная форма) */
-    transition: all 0.3s ease; /* Плавные анимации при изменении */
-    font-weight: 500; /* Средняя жирность шрифта */
-}
-
-.nav-link:hover {
-    background: rgba(255,255,255,0.1); /* Полупрозрачный белый фон при наведении */
-    transform: translateY(-2px); /* Легкое поднятие элемента при наведении */
-}
-
-/* ===== ОСНОВНОЙ КОНТЕНТ ===== */
-.content {
-    padding: 40px; /* Внутренние отступы контента */
-    max-width: 900px; /* Максимальная ширина контента */
-    margin: 0 auto; /* Центрирование контента */
-    /* Новое: Привязка к области сетки */
-    grid-area: main;
-}
-
-/* ===== ГЛАВНАЯ СТРАНИЦА ===== */
-.profile-header {
-    text-align: center; /* Выравнивание по центру */
-    margin-bottom: 40px; /* Отступ снизу */
-}
-
-.profile-title {
-    font-size: 32px; /* Размер шрифта заголовка */
-    color: #2c3e50; /* Темно-синий цвет текста */
-    margin-bottom: 10px; /* Отступ снизу */
-    font-weight: 300; /* Легкое начертание шрифта */
-}
-
-.profile-photo {
-    width: 220px; /* Фиксированная ширина фото */
-    height: 280px; /* Фиксированная высота фото */
-    border-radius: 15px; /* Скругленные углы фото */
-    object-fit: cover; /* Обрезка фото для сохранения пропорций */
-    margin: 20px auto; /* Центрирование и отступы */
-    border: 4px solid #8a531c; /* Синяя рамка вокруг фото */
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3); /* Тень с синим оттенком */
-    display: block; /* Делаем изображение блочным элементом для корректного центрирования */
-}
-
-.profile-name {
-    font-size: 24px; /* Размер шрифта имени */
-    color: #2c3e50; /* Темно-синий цвет текста */
-    margin: 10px 0; /* Вертикальные отступы */
-    font-weight: 500; /* Средняя жирность шрифта */
-}
-
-.profile-group {
-    font-size: 18px; /* Размер шрифта группы */
-    color: #7f8c8d; /* Серый цвет текста */
-    margin: 5px 0; /* Вертикальные отступы */
-}
-.about-me {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); /* Светлый градиентный фон */
-    padding: 25px; /* Внутренние отступы */
-    border-radius: 15px; /* Скругленные углы */
-    margin: 30px 0; /* Вертикальные отступы */
-    border-left: 5px solid #ea90666c; /* Синяя полоса слева */
-    font-size: 16px; /* Размер шрифта текста */
-    line-height: 1.8; /* Межстрочный интервал */
-}
-
-/* ===== НАВЫКИ ===== */
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 15px;
-    margin: 20px 0;
-}
-.skill-tag {
-    background: linear-gradient(135deg, #dab563 0%, #7a423671 100%);
-    color: white;
-    padding: 12px 25px;
-    border-radius: 25px;
-    font-weight: 600;
-    font-size: 14px;
-    box-shadow: 0 4px 15px rgba(69, 39, 3, 0.3);
-    transition: all 0.3s ease;
-    text-align: center;
-}
-
-.skill-tag:hover {
-transform: translateY(-3px);
-box-shadow: 0 6px 20px rgba(63, 35, 5, 0.4);
-}
-
-/* ===== ОПЫТ РАБОТЫ ===== */
-.experience-section {
-    margin-top: 50px; /* Отступ сверху */
-}
-
-.section-title {
-    font-size: 28px; /* Размер шрифта заголовка секции */
-    color: #3d1103; /* Темно-синий цвет текста */
-    text-align: center; /* Выравнивание по центру */
-    margin-bottom: 30px; /* Отступ снизу */
-    font-weight: 300; /* Легкое начертание шрифта */
-}
-
-/* ИЗМЕНЕНИЕ: Добавили CSS Grid для карточек опыта */
-.experience-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-gap: 20px;
-}
-
-.experience-card {
-    background: white; /* Белый фон карточки */
-    padding: 25px; /* Внутренние отступы */
-    margin: 20px 0; /* Вертикальные отступы */
-    border-radius: 12px; /* Скругленные углы */
-    box-shadow: 0 5px 20px rgba(0,0,0,0.08); /* Легкая тень */
-    border-left: 4px solid #ea6d665a; /* Синяя полоса слева */
-    transition: transform 0.3s ease; /* Плавная анимация трансформации */
-}
-
-.experience-card:hover {
-    transform: translateX(5px); /* Сдвиг вправо при наведении */
-}
-
-.experience-title {
-    font-size: 20px; /* Размер шрифта заголовка опыта */
-    color: #2c3e50; /* Темно-синий цвет текста */
-    margin: 0 0 10px 0; /* Отступ снизу */
-    font-weight: 600; /* Жирный шрифт */
-}
-
-.experience-desc {
-    color: #7f8c8d; /* Серый цвет текста */
-    line-height: 1.6; /* Межстрочный интервал */
-    margin: 0; /* Убираем отступы */
-}
-
-/* ===== ФУТЕР ===== */
-.footer {
-    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); /* Темный градиентный фон */
-    color: white; /* Белый цвет текста */
-    text-align: center; /* Выравнивание по центру */
-    padding: 30px; /* Внутренние отступы */
-    margin-top: 50px; /* Отступ сверху */
-    /* Новое: Привязка к области сетки */
-    grid-area: footer;
-}
-
-/* ===== АДАПТИВНОСТЬ ===== */
-/* Новое: Медиа-запросы для мобильных устройств */
-@media (max-width: 768px) {
-    .nav-list {
-        flex-direction: column;
-         gap: 10px;
-        }
-    .skills-grid {
-        grid-template-columns: 1fr;
-}
-    .experience-grid {
-        grid-template-columns: 1fr;
-}
-    .contact-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-    .contact-info {
-        padding: 25px 20px;
-        margin: 20px 0;
-    }
-    .contact-item {
-        padding: 25px 20px;
-    }
-    .contact-button {
-        padding: 15px 30px;
-        font-size: 18px;
-        margin: 30px auto;
-    }
-    main.content {
-        padding: 20px;
-    }
-}
-
-/* ===== СТИЛИ ДЛЯ СТРАНИЦЫ КОНТАКТОВ ===== */
-.contacts-container {
-    max-width: 1000px; /* Увеличили ширину контейнера */
-    margin: 0 auto;
-}
-
-.contact-info {
-    background: white;
-    padding: 35px 40px; /* Увеличили отступы */
-    margin: 25px 0;
-    border-radius: 15px; /* Увеличили скругление */
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1); /* Усилили тень */
-    border-left: 6px solid #ea68665c; /* Увеличили полосу слева */
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.contact-info::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: linear-gradient(90deg, #a95e2f 0%, #4d2a03 100%);
-}
-
-.contact-info:hover {
-    transform: translateY(-8px); /* Увеличили подъем при наведении */
-    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-}
-
-.contact-info h3 {
-    font-size: 24px; /* Увеличили размер заголовка */
-    color: #2c3e50;
-    margin: 0 0 15px 0;
-    font-weight: 600;
-}
-
-.contact-info p {
-    color: #7f8c8d;
-    line-height: 1.8;
-    margin: 0;
-    font-size: 18px; /* Увеличили размер текста */
-}
-
-.contact-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Увеличили минимальную ширину */
-    gap: 25px; /* Увеличили отступы между элементами */
-    margin: 40px 0;
-}
-
-.contact-item {
-    background: white;
-    padding: 30px 25px; /* Увеличили отступы */
-    border-radius: 15px; /* Увеличили скругление */
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1); /* Усилили тень */
-    border-left: 6px solid #ea73665a; /* Увеличили полосу слева */
-    text-align: center;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.contact-item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: linear-gradient(90deg, #c6ae15 0%, #a4d420 100%);
-}
-
-.contact-item:hover {
-    transform: translateY(-8px); /* Увеличили подъем при наведении */
-    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-}
-
-.contact-item h3 {
-    font-size: 20px; /* Увеличили размер заголовка */
-    color: #2c3e50;
-    margin: 0 0 15px 0;
-    font-weight: 600;
-}
-
-.contact-item p {
-    color: #a1ba49;
-    line-height: 1.8;
-    margin: 0;
-    font-size: 17px; /* Увеличили размер текста */
+    color: var(--color-white);
+    text-decoration: none;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--border-radius-medium);
+    transition: var(--transition-normal);
     font-weight: 500;
 }
 
-.contact-button {
-    display: block;
-    margin: 40px auto; /* Увеличили отступы */
-    padding: 18px 40px; /* Увеличили размер кнопки */
-    background: linear-gradient(135deg, #7a4d0ec4 0%, #964b2e 100%);
-    color: white;
-    border: none;
-    border-radius: 30px; /* Сделали более скругленной */
-    font-size: 20px; /* Увеличили размер шрифта */
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4); /* Усилили тень */
-    text-transform: uppercase; /* Добавили заглавные буквы */
-    letter-spacing: 1px; /* Добавили расстояние между буквами */
+.nav-link:hover {
+    background: var(--color-hover);
+    color: var(--color-white);
 }
 
-.contact-button:hover {
-    transform: translateY(-5px); /* Увеличили подъем при наведении */
-    box-shadow: 0 10px 30px rgba(73, 24, 13, 0.5);
+/* ===== ПЕРЕКЛЮЧАТЕЛЬ ТЕМЫ ===== */
+.theme-toggle {
+    background: var(--color-card);
+    border: 2px solid var(--color-border);
+    border-radius: var(--border-radius-medium);
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-lg);
+    transition: var(--transition-fast);
 }
+
+.theme-toggle:hover {
+    background: var(--color-card-hover);
+    border-color: var(--color-primary);
+}
+
+/* ===== ПРОФИЛЬ ===== */
+.profile-header {
+    text-align: center;
+    padding: var(--spacing-xl);
+    background: var(--color-card);
+    border-radius: var(--border-radius-medium);
+    margin: var(--spacing-xl);
+    box-shadow: var(--shadow-medium);
+}
+
+.profile-photo {
+    width: 200px;
+    height: 200px;
+    border-radius: var(--border-radius-medium);
+    object-fit: cover;
+    border: 4px solid var(--color-primary);
+    margin-bottom: var(--spacing-md);
+    transition: var(--transition-normal);
+}
+
+.profile-photo:hover {
+    transform: scale(1.05);
+    border-color: var(--color-secondary);
+}
+
+.profile-title {
+    font-size: var(--font-size-xl);
+    color: var(--color-text);
+    margin-bottom: var(--spacing-md);
+}
+
+.profile-name {
+    font-size: var(--font-size-lg);
+    color: var(--color-text);
+    margin-bottom: var(--spacing-sm);
+}
+
+.profile-group {
+    color: var(--color-text-light);
+    font-size: var(--font-size-base);
+}
+
+/* ===== ОБО МНЕ ===== */
+.about-me {
+    background: var(--color-card);
+    padding: var(--spacing-lg);
+    margin: var(--spacing-xl);
+    border-radius: var(--border-radius-medium);
+    box-shadow: var(--shadow-medium);
+    color: var(--color-text-light);
+}
+
+/* ===== НАВЫКИ ===== */
+.skills {
+    background: var(--color-card);
+    padding: var(--spacing-xl);
+    margin: var(--spacing-xl);
+    border-radius: var(--border-radius-medium);
+    box-shadow: var(--shadow-medium);
+    text-align: center;
+}
+
+.skills__title {
+    font-size: var(--font-size-xl);
+    color: var(--color-text);
+    margin-bottom: var(--spacing-md);
+}
+
+.skills__list {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+.skill {
+    background: var(--color-primary);
+    color: var(--color-white);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--border-radius-small);
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transition-normal);
+}
+
+.skill:hover {
+    background: var(--color-primary-dark);
+    transform: translateY(-2px);
+}
+
+/* ===== ПРОЕКТЫ ===== */
+.projects {
+    background: var(--color-card);
+    padding: var(--spacing-xl);
+    margin: var(--spacing-xl);
+    border-radius: var(--border-radius-medium);
+    box-shadow: var(--shadow-medium);
+}
+
+.projects__title {
+    font-size: var(--font-size-xl);
+    color: var(--color-text);
+    margin-bottom: var(--spacing-md);
+    text-align: center;
+}
+
+.projects__grid {
+    display: grid;
+    gap: var(--spacing-lg);
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.project-card {
+    background: var(--color-background-alt);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-medium);
+    border-left: 4px solid var(--color-primary);
+    transition: var(--transition-normal);
+}
+
+.project-card:hover {
+    background: var(--color-card-hover);
+    transform: translateY(-3px);
+}
+
+.project-card__title {
+    color: var(--color-text);
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+}
+
+.project-card__desc {
+    color: var(--color-text-light);
+    font-size: var(--font-size-base);
+}
+
+/* ===== ПОДВАЛ ===== */
+.page__footer {
+    background: linear-gradient(135deg, var(--color-dark), var(--color-darker));
+    color: var(--color-white);
+    text-align: center;
+    padding: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
+}
+
+/* ===== АДАПТИВ ===== */
+@media (max-width: 768px) {
+    .nav-list {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+
+    .skills__list {
+        flex-direction: column;
+    }
+}
+
