@@ -1,174 +1,280 @@
-/* ===== БАЗОВЫЕ СТИЛИ (копия из styles.css) ===== */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0; padding: 0;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    min-height: 100vh;
-}
-
-.page-container {
-    max-width: 1200px; margin: 0 auto; background: white; min-height: 100vh;
-    box-shadow: 0 0 30px rgba(0,0,0,0.1);
-    /* Новое: Сеточный макет для семантических областей */
-    display: grid;
-    grid-template-rows: auto auto 1fr auto;
-    grid-template-areas:
-    "header"
-    "nav"
-    "main"
-    "footer";
-}
-
-.header {
-    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-    color: white; text-align: center; padding: 30px; font-size: 28px; font-weight: 300; letter-spacing: 2px;
-}
-
-.nav { background: #2c3e50; padding: 20px 0; }
-.nav-list, .nav ul { list-style: none; margin: 0; padding: 0; display: flex; justify-content: center; gap: 25px; }
-.nav-item, .nav li { margin: 0; }
-.nav-link, .nav a {
-    color: white; text-decoration: none; padding: 12px 25px; border-radius: 25px; transition: all .3s ease; font-weight: 500;
-}
-.nav-link:hover, .nav a:hover { background: rgba(255,255,255,.1); transform: translateY(-2px); }
-
-.content { padding: 40px; max-width: 900px; margin: 0 auto; 
-    /* Новое: Привязка к области сетки */
-    grid-area: main; }
-
-.profile-header { text-align: center; margin-bottom: 40px; }
-.profile-title { font-size: 32px; color: #2c3e50; margin-bottom: 10px; font-weight: 300; }
-.profile-photo {
-    width: 220px; height: 280px; border-radius: 15px; object-fit: cover; margin: 20px auto;
-    border: 4px solid #667eea; box-shadow: 0 8px 25px rgba(102,126,234,.3);
-}
-.profile-name { font-size: 24px; color: #2c3e50; margin: 10px 0; font-weight: 500; }
-.profile-group { font-size: 18px; color: #7f8c8d; margin: 5px 0; }
-
-.about-me {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    padding: 25px; border-radius: 15px; margin: 30px 0; border-left: 5px solid #667eea;
-    font-size: 16px; line-height: 1.8;
-}
-
-.skills-container { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; margin: 30px 0; }
-.skill-tag {
-    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-    color: white; padding: 12px 25px; border-radius: 25px; font-weight: 600; font-size: 14px;
-    box-shadow: 0 4px 15px rgba(79,172,254,.3); transition: all .3s ease;
-}
-.skill-tag:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(79,172,254,.4); }
-
-.experience-section { margin-top: 50px; }
-.section-title {
-    font-size: 28px; color: #2c3e50; text-align: center; margin-bottom: 30px; font-weight: 300;
-}
-.experience-card {
-    background: white; padding: 25px; margin: 20px 0; border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0,0,0,.08); border-left: 4px solid #667eea; transition: transform .3s ease;
-}
-.experience-card:hover { transform: translateX(5px); }
-.experience-title { font-size: 20px; color: #2c3e50; margin: 0 0 10px; font-weight: 600; }
-.experience-desc { color: #7f8c8d; line-height: 1.6; margin: 0; }
-
-.footer {
-    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-    color: white; text-align: center; padding: 30px; margin-top: 50px;
-    /* Новое: Привязка к области сетки */
-    grid-area: footer;
-}
-
 /* ==== СПЕЦИФИЧНО ДЛЯ CONTACTS ==== */
-.contacts-section { margin-top: 20px; }
-
-.contacts-title-page { /* как section-title */
-    font-size: 28px; color: #2c3e50; text-align: center; margin-bottom: 30px; font-weight: 300;
+.contacts-section {
+    margin-top: var(--spacing-md);
 }
 
-/* единая карточка для всех контактов */
-.contacts-card {
-    background: white; 
-    padding: 30px; 
-    margin: 20px 0; 
-    border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0,0,0,.08); 
-    border-left: 4px solid #667eea;
-    transition: transform .3s ease;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-}
-
-.contacts-card:hover { 
-    transform: translateY(-5px); 
-    box-shadow: 0 8px 30px rgba(0,0,0,.12);
-}
-
-/* отдельные элементы контактов внутри карточки */
-.contacts-item {
+.contacts-title {
+    font-size: var(--font-size-2xl);
+    color: var(--color-text);
     text-align: center;
-    padding: 20px;
-    border-radius: 8px;
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    transition: all 0.3s ease;
+    margin-bottom: var(--spacing-xl);
+    font-weight: 300;
+    position: relative;
+    padding-bottom: var(--spacing-md);
 }
 
-.contacts-item:hover { 
+.contacts-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    border-radius: var(--radius-sm);
+}
+
+.contacts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.contact-card {
+    background: var(--color-card);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    text-align: center;
+    transition: all var(--transition-normal);
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80px;
+    height: 80px;
+    background: var(--color-primary);
+    opacity: 0.05;
+    border-radius: 0 var(--radius-lg) 0 100%;
+    transition: all var(--transition-normal);
+}
+
+.contact-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary);
+}
+
+.contact-card:hover::before {
+    width: 120px;
+    height: 120px;
+}
+
+.contact-icon {
+    font-size: var(--font-size-3xl);
+    margin-bottom: var(--spacing-md);
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.contact-title {
+    font-size: var(--font-size-lg);
+    color: var(--color-text);
+    margin-bottom: var(--spacing-sm);
+    font-weight: 600;
+}
+
+.contact-text {
+    color: var(--color-text-light);
+    line-height: 1.6;
+    font-size: var(--font-size-base);
+}
+
+.contact-button {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    margin: var(--spacing-xl) auto 0;
+    padding: var(--spacing-md) var(--spacing-xl);
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    color: var(--color-white);
+    border: none;
+    border-radius: var(--radius-lg);
+    font-size: var(--font-size-md);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    box-shadow: var(--shadow-md);
+}
+
+.contact-button:hover {
     transform: translateY(-3px);
-    background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+    box-shadow: var(--shadow-lg);
 }
 
-.contacts-title { 
-    font-size: 18px; 
-    color: #2c3e50; 
-    margin: 0 0 15px; 
-    font-weight: 600; 
+.contact-button:active {
+    transform: translateY(0);
 }
 
-.contacts-text { 
-    color: #7f8c8d; 
-    line-height: 1.6; 
-    margin: 0; 
-    font-size: 16px;
+/* Модальное окно */
+.contact-modal::backdrop {
+    background: rgba(0, 0, 0, 0.6);
+    animation: fadeIn 0.3s ease;
 }
 
-.contacts-text a {
-    color: #2c3e50;
-    text-decoration: none;
-    font-weight: 500;
+.contact-modal {
+    border: none;
+    border-radius: var(--radius-xl);
+    padding: 0;
+    box-shadow: var(--shadow-lg);
+    animation: slideIn 0.3s ease;
+    max-width: 500px;
+    width: 90vw;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: var(--color-card);
 }
 
-.contacts-text a:hover {
-    color: #667eea;
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
-.contacts-btn {
-    display: inline-block; padding: 10px 18px; border-radius: 25px;
-    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-    color: #fff; text-decoration: none; font-weight: 600;
-    box-shadow: 0 4px 15px rgba(79,172,254,.3); transition: transform .3s ease, box-shadow .3s ease;
+@keyframes slideIn {
+    from { 
+        opacity: 0;
+        transform: translateY(-50px) scale(0.9);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
-.contacts-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(79,172,254,.4); }
+
+.modal-header {
+    background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-darker) 100%);
+    color: var(--color-white);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+}
+
+.modal-content {
+    padding: var(--spacing-xl);
+}
+
+.form-group {
+    margin-bottom: var(--spacing-lg);
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: var(--spacing-sm);
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: var(--spacing-md);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-base);
+    transition: border-color var(--transition-normal);
+    box-sizing: border-box;
+    background: var(--color-card-hover);
+    color: var(--color-text);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.modal-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: flex-end;
+    margin-top: var(--spacing-xl);
+}
+
+.btn {
+    padding: var(--spacing-md) var(--spacing-xl);
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-size: var(--font-size-base);
+    transition: all var(--transition-normal);
+    font-weight: 600;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    color: var(--color-white);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+    background: var(--color-card-hover);
+    color: var(--color-text);
+    border: 2px solid var(--color-border);
+}
+
+.btn-secondary:hover {
+    background: var(--color-light);
+}
+
+.required {
+    color: #e74c3c;
+}
 
 /* ===== АДАПТИВНОСТЬ ===== */
-/* Новое: Медиа-запросы для мобильных устройств */
 @media (max-width: 768px) {
-    .nav-list {
-        flex-direction: column;
-         gap: 10px;
-        }
-    .skills-grid {
-        grid-template-columns: 1fr;
-}
-    .experience-grid {
-        grid-template-columns: 1fr;
-}
-    .contacts-card {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        padding: 20px;
+    .contacts-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: var(--spacing-md);
     }
-    main.content {
-        padding: 20px;
+    
+    .contacts-title {
+        font-size: var(--font-size-xl);
+    }
+    
+    .contact-modal {
+        margin: var(--spacing-md);
+        width: calc(100vw - 2rem);
+    }
+    
+    .modal-actions {
+        flex-direction: column;
+    }
+    
+    .btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .contacts-grid {
+        grid-template-columns: 1fr;
     }
 }

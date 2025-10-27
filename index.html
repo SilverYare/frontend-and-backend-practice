@@ -8,26 +8,26 @@
     </head>
     <body>
         <div class="page-container">
-            <div class="header">Портфолио</div>
-            <div class="nav">
+            <header class="header">
+                <h1 class="header__title">Портфолио</h1>
+                <!-- Переключатель темы -->
+                <button class="theme-toggle" id="themeToggle">🌙</button>
+            </header>
+            
+            <nav class="nav">
                 <ul class="nav-list">
                     <li class="nav-item"><a class="nav-link" href="#">Главная</a></li>
                     <li class="nav-item"><a class="nav-link" href="pages/news.html">Новости</a></li>
                     <li class="nav-item"><a class="nav-link" href="pages/goods.html">Товары</a></li>
                     <li class="nav-item"><a class="nav-link" href="pages/contacts.html">Контакты</a></li>
                 </ul>
-            </div>
-
-            <!-- Переключатель темы -->
-                <button class="theme-toggle" id="themeToggle">🌙</button>
-            </div>
-        </header>
-
-            <div class="content">
+            </nav>
+            
+            <main class="content">
                 <div class="profile-header">
-                    <h1 class="profile-title">Информация об авторе</h1>
+                    <h2 class="profile-title">Информация об авторе</h2>
                     <img class="profile-photo" src="images/photo.png" alt="Фото автора">
-                    <h2 class="profile-name">Серебрянский Ярослав Антонович</h2>
+                    <h3 class="profile-name">Серебрянский Ярослав Антонович</h3>
                     <p class="profile-group">ЭФБО-15-24</p>
                 </div>
                 
@@ -41,15 +41,27 @@
                     <div class="skills__list">
                         <div class="skill skill--html">
                             <span class="skill__name">HTML</span>
+                            <div class="skill__bar">
+                                <div class="skill__progress" data-progress="90"></div>
+                            </div>
                         </div>
                         <div class="skill skill--css">
                             <span class="skill__name">CSS</span>
+                            <div class="skill__bar">
+                                <div class="skill__progress" data-progress="85"></div>
+                            </div>
                         </div>
                         <div class="skill skill--js">
                             <span class="skill__name">JavaScript</span>
+                            <div class="skill__bar">
+                                <div class="skill__progress" data-progress="75"></div>
+                            </div>
                         </div>
                         <div class="skill skill--design">
                             <span class="skill__name">Design</span>
+                            <div class="skill__bar">
+                                <div class="skill__progress" data-progress="80"></div>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -59,21 +71,33 @@
                     <h2 class="projects__title">Проекты</h2>
                     <div class="projects__grid">
                         <div class="project-card">
+                            <div class="project-card__icon">🌐</div>
                             <h3 class="project-card__title">Лендинг</h3>
                             <p class="project-card__desc">Создание однострочных сайтов</p>
+                            <div class="project-card__tags">
+                                <span class="tag">HTML/CSS</span>
+                                <span class="tag">JS</span>
+                            </div>
                         </div>
                         <div class="project-card">
+                            <div class="project-card__icon">📦</div>
                             <h3 class="project-card__title">Логистика</h3>
-                            <p class="project-card__desc">Удобное и рассортированное положение товара на складе и на полках, понятный сайте</p>
+                            <p class="project-card__desc">Удобное и рассортированное положение товара на складе и на полках, понятный сайт</p>
+                            <div class="project-card__tags">
+                                <span class="tag">Backend</span>
+                            </div>
                         </div>
                         <div class="project-card">
+                            <div class="project-card__icon">🗺️</div>
                             <h3 class="project-card__title">Доступность</h3>
                             <p class="project-card__desc">Расположение точек купли-продажи по всей Москве</p>
+                            <div class="project-card__tags">
+                                <span class="tag">Maps API</span>
+                            </div>
                         </div>
                     </div>
                 </section>
-            </div>
-        </main>
+            </main>
 
         <!-- Подвал -->
         <footer class="page__footer">
@@ -109,6 +133,19 @@
                     themeToggle.textContent = '🌙';
                 }
             }
+            
+            // Анимация прогресс-баров навыков
+            const skillBars = document.querySelectorAll('.skill__progress');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const progress = entry.target.getAttribute('data-progress');
+                        entry.target.style.width = progress + '%';
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            skillBars.forEach(bar => observer.observe(bar));
         });
     </script>
 </body>

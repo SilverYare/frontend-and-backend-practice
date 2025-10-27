@@ -8,43 +8,43 @@ document.addEventListener('DOMContentLoaded', function() {
     // Данные проектов с реальными ссылками на GitHub
     const projectsData = {
         '1': {
-            title: 'Film Recommendation System',
-            image: '../images/IMG_9215.JPG',
-            description: 'Умная система рекомендаций фильмов на основе машинного обучения. Анализирует предпочтения пользователя и предлагает персонализированные рекомендации.',
+            title: 'Landing',
+            image: '../images/puerlending.jpg',
+            description: 'Создание однострочных сайтов',
             tags: ['Python', 'ML', 'Pandas', 'Scikit-learn'],
-            liveUrl: 'https://github.com/lilyaka1/Film-recommendation-system',
-            codeUrl: 'https://github.com/lilyaka1/Film-recommendation-system'
+            liveUrl: 'https://github.com/SilverYare',
+            codeUrl: 'https://github.com/SilverYare'
         },
         '2': {
-            title: 'ChatGPT Telegram Bot',
+            title: 'Logistic',
             image: '../images/IMG_6799.PNG',
             description: 'Телеграм бот с интеграцией OpenAI ChatGPT API. Позволяет общаться с нейросетью прямо в мессенджере.',
             tags: ['Python', 'AI', 'Telegram API', 'OpenAI'],
-            liveUrl: 'https://github.com/lilyaka1',
-            codeUrl: 'https://github.com/lilyaka1'
+            liveUrl: 'https://github.com/SilverYare',
+            codeUrl: 'https://github.com/SilverYare'
         },
         '3': {
             title: 'Учебные проекты',
             image: '../images/IMG_0751.JPG',
             description: 'Коллекция учебных проектов по фронтенд и бэкенд разработке. Включает контрольные работы и практические задания.',
             tags: ['HTML/CSS', 'JavaScript', 'Bootstrap', 'БЭМ'],
-            liveUrl: 'https://lilyaka1.github.io/',
-            codeUrl: 'https://github.com/lilyaka1'
+            liveUrl: 'https://SilverYare.github.io/',
+            codeUrl: 'https://github.com/SilverYare'
         },
         '4': {
             title: 'Портфолио БЭМ',
             image: '../images/IMG_9242.jpeg',
             description: 'Сайт-портфолио разработанный с использованием методологии БЭМ. Демонстрирует навыки организации кода и структурирования стилей.',
             tags: ['HTML', 'CSS', 'БЭМ'],
-            liveUrl: 'https://lilyaka1.github.io/fb_pr9/index_v1.html',
-            codeUrl: 'https://github.com/lilyaka1/fb_pr9'
+            liveUrl: 'https://silveryare.github.io/frontend-and-backend-practice/',
+            codeUrl: 'https://silveryare.github.io/frontend-and-backend-practice/'
         },
         '5': {
             title: 'Bootstrap Portfolio',
             image: '../images/IMG_0001.PNG',
             description: 'Адаптивное портфолио созданное на Bootstrap 5. Включает современные компоненты и отзывчивый дизайн.',
             tags: ['Bootstrap', 'HTML', 'JavaScript'],
-            liveUrl: 'https://lilyaka1.github.io/fb_pr9/pages/index_v2.html',
+            liveUrl: 'https://lilyaka1.github.io/fb_pr9/pages/index.html',
             codeUrl: 'https://github.com/lilyaka1/fb_pr9'
         },
         '6': {

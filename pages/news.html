@@ -4,13 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Новости — Семестровая</title>
+  <link rel="stylesheet" href="../style/styles.css" />
   <link rel="stylesheet" href="../style/news.css" />
 </head>
 <body>
   <div class="page-container">
     <!-- Хэдер -->
     <header class="header">
-      <h1>Пуэрбрейк</h1>
+      <h1 class="header__title">Пуэрбрейк</h1>
+      <button class="theme-toggle" id="themeToggle">🌙</button>
     </header>
     
     <!-- Меню -->
@@ -26,39 +28,76 @@
     <!-- Контент -->
     <main class="content">
       <section class="news-section">
-        <h1 class="news-title-page">Новости</h1>
+        <h2 class="news-title-page">Новости</h2>
 
         <article class="news-item">
-          <h2 class="news-title">Новый завоз пуэра из Юньнани</h2>
+          <div class="news-icon">📦</div>
+          <h3 class="news-title">Новый завоз пуэра из Юньнани</h3>
           <div class="news-meta">20.09.2025 · Автор: TeaMaster</div>
           <p class="news-text">
             Мы получили свежую партию шу и шэн пуэров прямо из Китая. Настоящие чайные шедевры уже доступны в нашем магазине!
           </p>
+          <div class="news-tags">
+            <span class="tag">Новинки</span>
+            <span class="tag">Пуэр</span>
+          </div>
         </article>
 
         <article class="news-item">
-          <h2 class="news-title">Семинар по завариванию пуэра</h2>
+          <div class="news-icon">🍵</div>
+          <h3 class="news-title">Семинар по завариванию пуэра</h3>
           <div class="news-meta">15.09.2025 · Автор: Мария Чайникова</div>
           <p class="news-text">
             Приглашаем всех любителей чая на мастер-класс по традиционному завариванию пуэра в стиле гунфу ча.
           </p>
+          <div class="news-tags">
+            <span class="tag">Мероприятия</span>
+            <span class="tag">Обучение</span>
+          </div>
         </article>
 
         <article class="news-item">
-          <h2 class="news-title">Скидки к Международному дню чая</h2>
+          <div class="news-icon">🎉</div>
+          <h3 class="news-title">Скидки к Международному дню чая</h3>
           <div class="news-meta">10.09.2025 · Автор: Admin</div>
           <p class="news-text">
             Только один день! Скидки до 25% на лучшие сорта пуэра.
           </p>
+          <div class="news-tags">
+            <span class="tag">Акции</span>
+            <span class="tag">Скидки</span>
+          </div>
         </article>
       </section>
     </main>
 
     <!-- Футер -->
-    <footer class="footer">
-      <p>2025 Магазин Пуэра. Все права защищены.</p>
+    <footer class="page__footer">
+      <p>&copy; 2025 Магазин Пуэра. Все права защищены.</p>
     </footer>
   </div>
+
+  <script>
+    // Переключение темы
+    document.addEventListener('DOMContentLoaded', function() {
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        setTheme(savedTheme);
+        
+        themeToggle.addEventListener('click', function() {
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            setTheme(newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+        
+        function setTheme(theme) {
+            body.setAttribute('data-theme', theme);
+            themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+        }
+    });
+  </script>
 </body>
 </html>
-
