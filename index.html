@@ -23,18 +23,18 @@
         <!-- Navigation -->
         <nav class="nav">
             <div class="container">
-                <ul class="nav__list">
-                    <li class="nav__item nav__item--active">
-                        <a href="index.html" class="nav__link">Главная</a>
+                <ul class="nav-list">
+                    <li class="nav-item nav-item--active">
+                        <a href="index.html" class="nav-link">Главная</a>
                     </li>
-                    <li class="nav__item">
-                        <a href="pages/news.html" class="nav__link">Новости</a>
+                    <li class="nav-item">
+                        <a href="pages/news.html" class="nav-link">Новости</a>
                     </li>
-                    <li class="nav__item">
-                        <a href="pages/goods.html" class="nav__link">Товары</a>
+                    <li class="nav-item">
+                        <a href="pages/goods.html" class="nav-link">Товары</a>
                     </li>
-                    <li class="nav__item">
-                        <a href="pages/contacts.html" class="nav__link">Контакты</a>
+                    <li class="nav-item">
+                        <a href="pages/contacts.html" class="nav-link">Контакты</a>
                     </li>
                 </ul>
             </div>
@@ -222,6 +222,20 @@
             // Alert при скачивании резюме
             document.getElementById('downloadResume').addEventListener('click', (e) => {
                 alert('Резюме будет доступно для скачивания в ближайшее время!');
+            });
+
+            // Активный пункт навигации
+            const currentPage = window.location.pathname.split('/').pop();
+            const navItems = document.querySelectorAll('.nav-item');
+            
+            navItems.forEach(item => {
+                const link = item.querySelector('.nav-link');
+                if (link.getAttribute('href') === currentPage || 
+                    (currentPage === '' && link.getAttribute('href') === 'index.html')) {
+                    item.classList.add('nav-item--active');
+                } else {
+                    item.classList.remove('nav-item--active');
+                }
             });
         });
     </script>
