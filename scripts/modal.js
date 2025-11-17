@@ -1,114 +1,87 @@
-// Управление модальным окном проекта
-
-document.addEventListener('DOMContentLoaded', function() {
-    const modal = document.getElementById('projectModal');
-    const projectCards = document.querySelectorAll('.project-card');
-    const closeBtn = document.querySelector('.close');
-
-    // Данные проектов с реальными ссылками на GitHub
-    const projectsData = {
-        '1': {
-            title: 'Landing',
-            image: '../images/puerlending.jpg',
-            description: 'Создание однострочных сайтов',
-            tags: ['Python', 'ML', 'Pandas', 'Scikit-learn'],
-            liveUrl: 'https://github.com/SilverYare',
-            codeUrl: 'https://github.com/SilverYare'
-        },
-        '2': {
-            title: 'Logistic',
-            image: '../images/IMG_6799.PNG',
-            description: 'Телеграм бот с интеграцией OpenAI ChatGPT API. Позволяет общаться с нейросетью прямо в мессенджере.',
-            tags: ['Python', 'AI', 'Telegram API', 'OpenAI'],
-            liveUrl: 'https://github.com/SilverYare',
-            codeUrl: 'https://github.com/SilverYare'
-        },
-        '3': {
-            title: 'Учебные проекты',
-            image: '../images/IMG_0751.JPG',
-            description: 'Коллекция учебных проектов по фронтенд и бэкенд разработке. Включает контрольные работы и практические задания.',
-            tags: ['HTML/CSS', 'JavaScript', 'Bootstrap', 'БЭМ'],
-            liveUrl: 'https://SilverYare.github.io/',
-            codeUrl: 'https://github.com/SilverYare'
-        },
-        '4': {
-            title: 'Портфолио БЭМ',
-            image: '../images/IMG_9242.jpeg',
-            description: 'Сайт-портфолио разработанный с использованием методологии БЭМ. Демонстрирует навыки организации кода и структурирования стилей.',
-            tags: ['HTML', 'CSS', 'БЭМ'],
-            liveUrl: 'https://silveryare.github.io/frontend-and-backend-practice/',
-            codeUrl: 'https://silveryare.github.io/frontend-and-backend-practice/'
-        },
-        '5': {
-            title: 'Bootstrap Portfolio',
-            image: '../images/IMG_0001.PNG',
-            description: 'Адаптивное портфолио созданное на Bootstrap 5. Включает современные компоненты и отзывчивый дизайн.',
-            tags: ['Bootstrap', 'HTML', 'JavaScript'],
-            liveUrl: 'https://lilyaka1.github.io/fb_pr9/pages/index.html',
-            codeUrl: 'https://github.com/lilyaka1/fb_pr9'
-        },
-        '6': {
-            title: 'Практика 13',
-            image: '../images/memee.jpg',
-            description: 'Современное портфолио с темной темой и дизайном вдохновленным альбомом MBDTF. Включает переключатель темы и интерактивные элементы.',
-            tags: ['HTML/CSS', 'JavaScript', 'Dark Theme'],
-            liveUrl: 'https://lilyaka1.github.io/fb_pr9/',
-            codeUrl: 'https://github.com/lilyaka1/fb_pr9'
+// Модальное окно с поддержкой A11y
+(function() {
+    const modal = document.getElementById('modal');
+    const openModalBtn = document.getElementById('openModalBtn');
+    const closeButtons = document.querySelectorAll('[data-close-modal]');
+    
+    let previousActiveElement = null;
+    
+    // Открытие модального окна
+    function openModal() {
+        previousActiveElement = document.activeElement;
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        
+        // Устанавливаем фокус на первый интерактивный элемент
+        const focusableElements = modal.querySelectorAll(
+            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        );
+        if (focusableElements.length > 0) {
+            focusableElements[0].focus();
         }
-    };
-
-    // Открытие модального окна при клике на карточку проекта
-    projectCards.forEach(card => {
-        card.addEventListener('click', function() {
-            const projectId = this.getAttribute('data-id');
-            const project = projectsData[projectId];
-
-            if (project) {
-                // Заполняем модальное окно данными
-                document.getElementById('modalTitle').textContent = project.title;
-                document.getElementById('modalImage').src = project.image;
-                document.getElementById('modalDescription').textContent = project.description;
-                
-                // Добавляем теги
-                const tagsContainer = document.getElementById('modalTags');
-                tagsContainer.innerHTML = '';
-                project.tags.forEach(tag => {
-                    const tagSpan = document.createElement('span');
-                    tagSpan.className = 'tag';
-                    tagSpan.textContent = tag;
-                    tagsContainer.appendChild(tagSpan);
-                });
-
-                // Устанавливаем ссылки
-                const liveLink = document.getElementById('modalLiveLink');
-                const githubLink = document.getElementById('modalGithubLink');
-                if (liveLink) liveLink.href = project.liveUrl;
-                if (githubLink) githubLink.href = project.codeUrl;
-
-                // Показываем модальное окно
-                modal.style.display = 'block';
+        
+        // Добавляем обработчики
+        document.addEventListener('keydown', handleKeyDown);
+        trapFocus();
+    }
+    
+    // Закрытие модального окна
+    function closeModal() {
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        
+        // Возвращаем фокус на элемент, который открыл модалку
+        if (previousActiveElement) {
+            previousActiveElement.focus();
+        }
+        
+        // Удаляем обработчики
+        document.removeEventListener('keydown', handleKeyDown);
+    }
+    
+    // Обработка Escape
+    function handleKeyDown(e) {
+        if (e.key === 'Escape') {
+            closeModal();
+        }
+    }
+    
+    // Ловушка фокуса (focus trap)
+    function trapFocus() {
+        const focusableElements = modal.querySelectorAll(
+            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        );
+        
+        if (focusableElements.length === 0) return;
+        
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+        
+        modal.addEventListener('keydown', function(e) {
+            if (e.key !== 'Tab') return;
+            
+            if (e.shiftKey) {
+                // Shift + Tab
+                if (document.activeElement === firstElement) {
+                    e.preventDefault();
+                    lastElement.focus();
+                }
+            } else {
+                // Tab
+                if (document.activeElement === lastElement) {
+                    e.preventDefault();
+                    firstElement.focus();
+                }
             }
         });
-    });
-
-    // Закрытие модального окна
-    if (closeBtn) {
-        closeBtn.addEventListener('click', function() {
-            modal.style.display = 'none';
-        });
     }
-
-    // Закрытие модального окна при клике вне его
-    window.addEventListener('click', function(event) {
-        if (event.target === modal) {
-            modal.style.display = 'none';
-        }
+    
+    // События
+    if (openModalBtn) {
+        openModalBtn.addEventListener('click', openModal);
+    }
+    
+    closeButtons.forEach(button => {
+        button.addEventListener('click', closeModal);
     });
-
-    // Закрытие модального окна по Escape
-    document.addEventListener('keydown', function(event) {
-        if (event.key === 'Escape' && modal.style.display === 'block') {
-            modal.style.display = 'none';
-        }
-    });
-});
+})();
