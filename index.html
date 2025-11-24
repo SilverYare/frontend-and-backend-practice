@@ -9,7 +9,7 @@
     <script src="filters.js"></script>
     <script src="from-validation.js"></script>
     <script src="index.js"></script>
-    <script src="filters.js"></script>
+    <script src="modals.js"></script>
 </head>
 <body>
     <div class="page">
@@ -391,56 +391,6 @@
         </div>
     </div>
 
-    <script>
-        let selectedFormat = null;
-
-        function openResumeModal() {
-            document.getElementById('resumeModal').classList.add('active');
-        }
-
-        function closeResumeModal() {
-            document.getElementById('resumeModal').classList.remove('active');
-            resetSelection();
-        }
-
-        function selectFormat(format) {
-            selectedFormat = format;
-            
-            // Сбрасываем предыдущий выбор
-            document.querySelectorAll('.format-option').forEach(option => {
-                option.classList.remove('selected');
-            });
-            
-            // Выделяем выбранный формат
-            document.querySelector(`[data-format="${format}"]`).classList.add('selected');
-            
-            // Активируем кнопку скачивания
-            document.getElementById('downloadButton').disabled = false;
-        }
-
-        function resetSelection() {
-            selectedFormat = null;
-            document.querySelectorAll('.format-option').forEach(option => {
-                option.classList.remove('selected');
-            });
-            document.getElementById('downloadButton').disabled = true;
-        }
-
-
-
-        // Закрытие модального окна при клике вне его
-        document.getElementById('resumeModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeResumeModal();
-            }
-        });
-
-        // Закрытие модального окна по ESC
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeResumeModal();
-            }
-        });
-    </script>
+    
 </body>
 </html>
