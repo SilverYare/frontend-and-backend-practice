@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Портфолио - Серебрянский Ярослав</title>
     <link rel="stylesheet" href="style/styles.css">
+    <script src="filters.js"></script>
+    <script src="from-validation.js"></script>
+    <script src="index.js"></script>
+    <script src="modal.js"></script>
 </head>
 <body>
     <div class="page">
@@ -411,83 +415,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Портфолио - Резюме</title>
     <style>
-        /* ===== CSS ПЕРЕМЕННЫЕ ДЛЯ КОРИЧНЕВОЙ ТЕМЫ ===== */
-        :root {
-            --color-primary: #8B5A3C;
-            --color-primary-dark: #6B4423;
-            --color-primary-light: #A67C52;
-            --color-secondary: #C19A6B;
-            --color-accent: #D4A574;
-            
-            --color-dark: #3E2723;
-            --color-darker: #2C1810;
-            --color-light: #F5E6D3;
-            --color-lighter: #FAF0E6;
-            --color-white: #ffffff;
-            
-            --color-background: linear-gradient(135deg, #F5E6D3 0%, #E8D5C4 100%);
-            --color-background-solid: #F5E6D3;
-            --color-card: #FFFFFF;
-            --color-card-hover: #FFF8F0;
-            
-            --color-text: #3E2723;
-            --color-text-light: #6B5B4F;
-            --color-text-inverse: #ffffff;
-            
-            --color-border: #D4A574;
-            --shadow-sm: 0 2px 8px rgba(139, 90, 60, 0.1);
-            --shadow-md: 0 4px 16px rgba(139, 90, 60, 0.15);
-            --shadow-lg: 0 8px 32px rgba(139, 90, 60, 0.2);
-            
-            --gradient-primary: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
-            --gradient-dark: linear-gradient(135deg, var(--color-dark), var(--color-darker));
-            
-            --font-size-xs: 0.75rem;
-            --font-size-sm: 0.875rem;
-            --font-size-base: 1rem;
-            --font-size-md: 1.125rem;
-            --font-size-lg: 1.25rem;
-            --font-size-xl: 1.5rem;
-            --font-size-2xl: 2rem;
-            --font-size-3xl: 2.5rem;
-            
-            --spacing-xs: 0.25rem;
-            --spacing-sm: 0.5rem;
-            --spacing-md: 1rem;
-            --spacing-lg: 1.5rem;
-            --spacing-xl: 2rem;
-            --spacing-2xl: 3rem;
-            
-            --radius-sm: 0.5rem;
-            --radius-md: 0.75rem;
-            --radius-lg: 1rem;
-            --radius-xl: 1.5rem;
-            
-            --transition-fast: 0.2s ease;
-            --transition-normal: 0.3s ease;
-            --transition-slow: 0.5s ease;
-        }
-
-        /* Базовые стили */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: var(--color-text);
-            background: var(--color-background);
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: var(--spacing-xl);
-        }
+        
 
         /* Кнопка резюме */
         .resume-section {
