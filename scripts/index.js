@@ -54,53 +54,5 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 item.classList.remove('nav-item--active');
             }
-            <>
-        let selectedFormat = null;
-
-        function openResumeModal() {
-            document.getElementById('resumeModal').classList.add('active');
-        }
-
-        function closeResumeModal() {
-            document.getElementById('resumeModal').classList.remove('active');
-            resetSelection();
-        }
-
-        function selectFormat(format) {
-            selectedFormat = format;
-            
-            // Сбрасываем предыдущий выбор
-            document.querySelectorAll('.format-option').forEach(option => {
-                option.classList.remove('selected');
-            });
-            
-            // Выделяем выбранный формат
-            document.querySelector(`[data-format="${format}"]`).classList.add('selected');
-            
-            // Активируем кнопку скачивания
-            document.getElementById('downloadButton').disabled = false;
-        }
-
-        function resetSelection() {
-            selectedFormat = null;
-            document.querySelectorAll('.format-option').forEach(option => {
-                option.classList.remove('selected');
-            });
-            document.getElementById('downloadButton').disabled = true;
-        }
-
-
-
-        // Закрытие модального окна при клике вне его
-        document.getElementById('resumeModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeResumeModal();
-            }
         });
-
-        // Закрытие модального окна по ESC
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeResumeModal();
-            }
         });
